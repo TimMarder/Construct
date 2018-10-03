@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 struct foo{
-  char * name;
-  int x;
+  char * acc;
+  int bal;
 };
 
 int main(){
   struct foo first;
-  first.name = "hello";
-  first.x = 5;
-  printf("%s %d\n", first.name,first.x);
-
+  first.acc = "hello";
+  first.bal = 5;
+  printf("%s %d\n", first.acc,first.bal);
 }
+
