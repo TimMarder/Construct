@@ -1,10 +1,10 @@
 struct account{
-  char[50] name;
+  char name[10];
   int bal;
 };
 
-int makeacc();
+struct account makeacc();
 
-int myacc();
+int myacc(struct account a);
 
-int changebal();
+int changebal(struct account *accp, char[10] newname, int newbal);
