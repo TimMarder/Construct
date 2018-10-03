@@ -1,15 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-struct foo{
-  char * acc;
-  int bal;
-};
+#include <time.h>
 
 int main(){
-  struct foo first;
-  first.acc = "hello";
+  struct account first;
+  first.name = "hello";
   first.bal = 5;
-  printf("%s %d\n", first.acc,first.bal);
+  int myacc();
 }
 
+makeacc(){
+
+
+
+}
+
+int myacc(){
+  printf("%s %d\n", first.name,first.bal);
+  return 0;
+}
+
+int changebal(
