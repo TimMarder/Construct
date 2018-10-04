@@ -1,45 +1,84 @@
+// Tim Marder & Dahong Jiang
+// Systems pd04
+// Work #06 -- Con-STRUCT-ion
+// 2018-10-03
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <strings.h>
 
-struct account{
-  char *name[10];
+struct bank { //declares the bank struct prototype
+  char *name;
   int bal;
 };
 
-struct account makeacc(){
-  srand(time(NULL));
-  struct account a;
-  int i;
-  for(i = 0; i < 9; i++){
-    a.name[i] =  rand() %26+65;
-  }
-  a.name[9] = 0;
-  a.bal = rand() + 1000;
-  return a;
+struct bank makeacc(){
+  struct bank acc;
+
+  int num = rand() % 10; //10 different possibilities of user name and balance
+	if (num == 0){
+		struct bank acc = {"John", 500};
+	}
+	else if (num == 1){
+		struct bank acc = {"Steven", 1200};
+	}
+	else if(num == 2){
+		struct bank acc = {"Larry", 180};
+	}
+	else if(num == 3){
+		struct bank acc = {"Tim", 290};
+	}
+	else if(num == 4){
+		struct bank acc = {"Robert", 850};
+	}
+    else if (num == 5){
+		struct bank acc = {"Ariel", 340};
+	}
+	else if (num == 6){
+		struct bank acc = {"Howard", 1760};
+	}
+	else if(num == 7){
+		struct bank acc = {"Gary", 1100};
+	}
+	else if(num == 8){
+		struct bank acc = {"Ryan", 480};
+	}
+	else {
+		struct bank acc = {"Dahong", 910};
+	}
+	return acc;
 }
 
-int myacc(struct account a){
-  printf("Name:%s \n Account balance:$%d \n", a.name,a.bal);
-  return 0;
+void myacc(struct bank acc){ //prints the name and balance of account
+  printf("Name: %s \nAccount balance: $%d \n", acc.name,acc.bal);
 }
 
-int changebal(struct account *accp, char newname[10], int newbal){
-  int i;
-  for(i = 0; i < 9;i++){
-    accp->name[i] = newname[i];
-  }
-  accp->bal = newbal;
-  return 0;
+void modify(struct bank *acc, char *newname, int newbal){
+    acc->name = newname; //sets name of accout to newname
+    acc->bal = newbal;   //sets balance of account to newbal
 }
 
 int main(){
-  struct account first;
-  first = makeacc();
-  printf("Initial account\n");
-  myacc(first);
-  printf("Changing an account \n");
-  changebal(&first,"Hacker", 999999);
-  myacc(first);
-  return 0;
+    srand(time(NULL));
+
+	printf("Generating first bank account...\n");
+	struct bank first = makeacc();
+	myacc(first);
+    printf("\n");
+	printf("Generating second bank account...\n");
+	struct bank second = makeacc();
+	myacc(second);
+    printf("\n");
+	printf("Generating third bank account...\n");
+	struct bank third = makeacc();
+	myacc(third);
+    printf("\n");
+	printf("Changing name and balance of third bank account...\n");
+	modify(&third, "Harry", 800);
+	myacc(third);
+    printf("\n");
+
+	return 0;
+
 }
